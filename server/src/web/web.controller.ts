@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HttpCode, Post, Query } from '@nestjs/common';
 import { BrowseDto, PublishDto } from './dto';
-import { WebService } from './web.service';
+import { WebService } from './web.services';
 
 @Controller()
 export class WebController {

@@ -4,34 +4,34 @@ import { VISIT_VIA, VisitVia } from '../schemas/visit.schema';
 export class BrowseDto {
   @IsString()
   @IsNotEmpty()
-  person: string;
+  person!: string;
 
   @IsString()
   @IsNotEmpty()
   @MaxLength(100)
-  address: string;
+  address!: string;
 
   @IsIn(VISIT_VIA)
-  via: VisitVia;
+  via!: VisitVia;
 }
 
 export class PublishDto {
   @IsString()
   @IsNotEmpty()
-  author: string;
+  author!: string;
 
   @IsString()
   @IsNotEmpty()
   @MaxLength(100)
-  address: string;
+  address!: string;
 
   @IsString()
   @IsNotEmpty()
   @MaxLength(120)
-  title: string;
+  title!: string;
 
   @IsString()
   @IsNotEmpty()
   @MaxLength(50000)
-  html: string;
+  html!: string;
 }

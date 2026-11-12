@@ -5,7 +5,7 @@ import { Site, SiteSchema } from './schemas/site.schema';
 import { Visit, VisitSchema } from './schemas/visit.schema';
 import { SeedService } from './seed/seed.service';
 import { WebController } from './web/web.controller';
-import { WebService } from './web/web.service';
+import { WebService } from './web/web.services';
 
 @Module({
   imports: [

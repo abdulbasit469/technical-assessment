@@ -1,0 +1,112 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background: #f5f3ef;
+  color: #1f2937;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #111827;
+  color: white;
+}
+
+.toolbar input,
+.toolbar select,
+.toolbar button {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 0.75rem;
+}
+
+.viewport {
+  flex: 1;
+  padding: 1rem;
+}
+
+.message {
+  max-width: 42rem;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+}
+
+.results {
+  max-height: 70vh;
+  overflow: auto;
+  padding: 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+}
+
+.hit {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hit-title {
+  display: block;
+  font-weight: 700;
+}
+
+.hit-address,
+.hit-snippet,
+.muted {
+  display: block;
+  color: #4b5563;
+}
+
+.frame {
+  width: 100%;
+  min-height: 70vh;
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  background: white;
+}
+
+.status {
+  margin: 0.75rem 1rem 0;
+  padding: 0.5rem 0.75rem;
+  background: #ecfeff;
+  color: #0f172a;
+  border-radius: 0.5rem;
+}
+
+.status.error {
+  background: #fee2e2;
+  color: #7f1d1d;
+}

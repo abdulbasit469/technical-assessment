@@ -16,7 +16,8 @@ const options: sanitizeHtml.IOptions = {
   transformTags: {
     a: (tagName, attribs) => {
       const href = (attribs.href ?? '').trim().toLowerCase();
-      return { tagName, attribs: ADDRESS_PATTERN.test(href) ? { href } : {} };
+      const safeAttribs = ADDRESS_PATTERN.test(href) ? { href } : {};
+      return { tagName, attribs: safeAttribs } as any;
     },
   },
 };
