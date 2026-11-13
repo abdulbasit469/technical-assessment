@@ -2,7 +2,9 @@ html, body {
   margin: 0;
   padding: 0;
   min-height: 100%;
-  background: #efefe9;
+  background:
+    radial-gradient(circle at top, rgba(148, 163, 184, 0.18), transparent 30%),
+    linear-gradient(180deg, #f1efe9 0%, #e8e4df 100%);
   color: #1f2937;
   font-family: Georgia, 'Times New Roman', serif;
 }
@@ -13,6 +15,7 @@ html, body {
 
 body {
   min-height: 100vh;
+  perspective: 1200px;
 }
 
 button,
@@ -25,6 +28,18 @@ select {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .toolbar {
@@ -36,7 +51,11 @@ select {
   background: linear-gradient(180deg, #172334 0%, #0f1b2b 100%);
   color: white;
   border-bottom: 1px solid rgba(148, 163, 184, 0.25);
-  box-shadow: inset 0 -1px 0 rgba(148, 163, 184, 0.18);
+  box-shadow:
+    inset 0 -1px 0 rgba(148, 163, 184, 0.18),
+    0 8px 18px rgba(15, 23, 42, 0.18);
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .toolbar > * {
@@ -74,13 +93,14 @@ select {
 
 .toolbar button {
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .toolbar button:hover:not(:disabled) {
   background: rgba(255, 255, 255, 0.12);
   border-color: rgba(255, 255, 255, 0.28);
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(1.01);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.14);
 }
 
 .nav {
@@ -132,10 +152,19 @@ select {
   max-width: 42rem;
   margin: 2.5rem auto;
   padding: 2rem 1.75rem;
-  background: rgba(255, 255, 255, 0.86);
+  background: linear-gradient(180deg, rgba(255,255,255,0.88) 0%, rgba(248,250,252,0.92) 100%);
   border: 1px solid #dfe3e8;
   border-radius: 1rem;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  transform: translateZ(0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.1);
 }
 
 .message h1 {
@@ -154,10 +183,12 @@ select {
   max-height: 70vh;
   overflow: auto;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.88);
+  background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.95) 100%);
   border: 1px solid #e5e7eb;
   border-radius: 1rem;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  box-shadow:
+    0 10px 24px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 .hit {
@@ -169,13 +200,15 @@ select {
   border-radius: 0.75rem;
   padding: 0.9rem 1rem;
   margin-bottom: 0.6rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease, filter 0.2s ease;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
 }
 
 .hit:hover {
   border-color: #94a3b8;
-  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.09);
-  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.09), inset 0 1px 0 rgba(255,255,255,0.8);
+  transform: translateY(-1px) scale(1.002);
+  filter: saturate(1.05);
 }
 
 .hit-title {
@@ -196,8 +229,10 @@ select {
   min-height: 70vh;
   border: 1px solid #d1d5db;
   border-radius: 1rem;
-  background: white;
-  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  background: linear-gradient(180deg, #ffffff 0%, #fafaf9 100%);
+  box-shadow:
+    0 10px 24px rgba(15, 23, 42, 0.06),
+    inset 0 1px 0 rgba(255,255,255,0.8);
 }
 
 .status {
@@ -229,11 +264,26 @@ select {
 .dialog {
   width: min(58rem, calc(100vw - 2rem));
   max-width: 58rem;
-  background: rgba(255, 255, 255, 0.94);
+  background: linear-gradient(180deg, rgba(255,255,255,0.97) 0%, rgba(248,250,252,0.99) 100%);
   border: 1px solid #dfe3e8;
   border-radius: 1rem;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
+  box-shadow:
+    0 20px 44px rgba(15, 23, 42, 0.18),
+    inset 0 1px 0 rgba(255,255,255,0.9);
   padding: 1.5rem 1.5rem 1rem;
+  transform: translateY(0);
+  animation: modalRise 0.25s ease;
+}
+
+@keyframes modalRise {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .dialog h2 {
